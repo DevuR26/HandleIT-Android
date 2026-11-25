@@ -455,8 +455,7 @@ fun ModelApiSettingsSection(
     val isToolPkgProvider = selectedApiProvider == null
     val canUseKeylessModelUi = isToolPkgProvider || !providerRequiresApiKey
     val canEditModelName =
-        !isMnnProvider &&
-            !isLlamaProvider &&
+        !isLlamaProvider &&
             (canUseKeylessModelUi || !isUsingDefaultApiKey)
     val canRequestModelList = when {
         isCodexProvider -> codexAuthState != null && apiEndpointInput.isNotBlank()
@@ -775,7 +774,7 @@ fun ModelApiSettingsSection(
                                 modelNameInput = it.replace("\n", "").replace("\r", "")
                             }
                         },
-                    enabled = !isMnnProvider && !isLlamaProvider && canEditModelName,
+                    enabled = !isLlamaProvider && canEditModelName,
                     trailingContent = {
                 IconButton(
                         onClick = {
